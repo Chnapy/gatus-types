@@ -7,8 +7,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write  # Required for OIDC
       contents: read
-      id-token: write
+
     steps:
       - uses: actions/checkout@v5
       # Setup .npmrc file to publish to npm
@@ -23,6 +24,4 @@ jobs:
       - run: npm run c:format
       - run: npm run c:pack
 
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
