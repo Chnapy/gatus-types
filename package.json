@@ -1,0 +1,43 @@
+{
+  "name": "gatus-types",
+  "version": "1.0.0",
+  "description": "Type definitions of Gatus config",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chnapy/gatus-types.git"
+  },
+  "author": "Richard Haddad <https://github.com/Chnapy>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chnapy/gatus-types/issues"
+  },
+  "homepage": "https://github.com/Chnapy/gatus-types#readme",
+  "main": "index.d.ts",
+  "types": "types",
+  "files": [
+    "index.d.ts"
+  ],
+  "keywords": [
+    "gatus",
+    "typescript",
+    "types"
+  ],
+  "scripts": {
+    "generate": "node generate.ts && biome format --write index.d.ts",
+    "c:format": "biome format .",
+    "c:format:fix": "biome format --write .",
+    "c:lint": "biome lint .",
+    "c:lint:fix": "biome lint --write .",
+    "c:test": "tsc",
+    "c:pack": "attw --pack ."
+  },
+  "devDependencies": {
+    "gatus-types": ".",
+    "@arethetypeswrong/cli": "0.18.2",
+    "@biomejs/biome": "^2.4.11",
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^25.6.0",
+    "json-schema-to-typescript": "^15.0.4",
+    "typescript": "next"
+  }
+}
