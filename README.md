@@ -1,5 +1,7 @@
 # gatus-types
 
+[![npm](https://img.shields.io/npm/v/gatus-types)](https://www.npmjs.com/package/gatus-types)
+
 Type definitions for Gatus config https://github.com/TwiN/gatus.
 
 Made for config file generation (tools, GitOps, etc).
