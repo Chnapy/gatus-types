@@ -1,7 +1,7 @@
 {
   "name": "gatus-types",
   "version": "1.0.0",
-  "description": "Type definitions of Gatus config",
+  "description": "Type definitions for Gatus config",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Chnapy/gatus-types.git"
@@ -22,6 +22,9 @@
     "typescript",
     "types"
   ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "generate": "node generate.ts && biome format --write index.d.ts",
     "c:format": "biome format .",
