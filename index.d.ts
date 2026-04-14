@@ -4012,6 +4012,22 @@ export interface BasicConfig {
   'password-bcrypt-base64': string;
 }
 /**
+ * Button is the configuration for a button on the UI
+ *
+ * This interface was referenced by `HttpsGithubComTwiNGatusV5ConfigConfig`'s JSON-Schema
+ * via the `definition` "Button".
+ */
+export interface Button {
+  /**
+   * Name is the text to display on the button
+   */
+  name?: string;
+  /**
+   * Link to open when the button is clicked.
+   */
+  link?: string;
+}
+/**
  * Checker is the configuration for making sure Gatus has access to the internet.
  *
  * This interface was referenced by `HttpsGithubComTwiNGatusV5ConfigConfig`'s JSON-Schema
@@ -4096,7 +4112,7 @@ export interface Config {
   suites?: Suite[];
   storage?: StorageConfig;
   web?: WebConfig;
-  ui?: UiConfig1;
+  ui?: ConfigUiConfig;
   maintenance?: MaintenanceConfig1;
   remote?: RemoteConfig;
   connectivity?: ConnectivityConfig;
@@ -4548,36 +4564,77 @@ export interface WebTLSConfig {
 /**
  * UI is the configuration for the UI
  */
-export interface UiConfig1 {
+export interface ConfigUiConfig {
   /**
-   * HideConditions whether to hide the condition results on the UI
+   * Title of the page
    */
-  'hide-conditions': boolean;
+  title?: string;
   /**
-   * HideHostname whether to hide the hostname in the Result
+   * Meta description of the page
    */
-  'hide-hostname': boolean;
+  description?: string;
   /**
-   * HideURL whether to ensure the URL is not displayed in the results. Useful if the URL contains a token.
+   * Dashboard Title between header and endpoints
    */
-  'hide-url': boolean;
+  'dashboard-heading'?: string;
   /**
-   * HidePort whether to hide the port in the Result
+   * Dashboard Description between header and endpoints
    */
-  'hide-port': boolean;
+  'dashboard-subheading'?: string;
   /**
-   * HideErrors whether to hide the errors in the Result
+   * Header is the text at the top of the page
    */
-  'hide-errors': boolean;
+  header?: string;
   /**
-   * DontResolveFailedConditions whether to resolve failed conditions in the Result for display in the UI
+   * Logo to display on the page
    */
-  'dont-resolve-failed-conditions': boolean;
+  logo?: string;
   /**
-   * ResolveSuccessfulConditions whether to resolve successful conditions in the Result for display in the UI
+   * Link to open when clicking on the logo
    */
-  'resolve-successful-conditions': boolean;
-  badge: Badge1;
+  link?: string;
+  favicon?: Favicon;
+  /**
+   * Buttons to display below the header
+   */
+  buttons?: Button[];
+  /**
+   * Custom CSS to include in the page
+   */
+  'custom-css'?: string;
+  /**
+   * DarkMode is a flag to enable dark mode by default
+   */
+  'dark-mode'?: boolean;
+  /**
+   * DefaultSortBy is the default sort option ('name', 'group', 'health')
+   */
+  'default-sort-by'?: string;
+  /**
+   * DefaultFilterBy is the default filter option ('none', 'failing', 'unstable')
+   */
+  'default-filter-by'?: string;
+  /**
+   * LoginSubtitle is the subtitle displayed on the OIDC login page
+   */
+  'login-subtitle'?: string;
+}
+/**
+ * Favourite icon to display in web browser tab or address bar
+ */
+export interface Favicon {
+  /**
+   * URL or path to default favourite icon.
+   */
+  default?: string;
+  /**
+   * URL or path to favourite icon for 16x16 size.
+   */
+  size16x16?: string;
+  /**
+   * URL or path to favourite icon for 32x32 size.
+   */
+  size32x32?: string;
 }
 /**
  * Config allows for the configuration of a maintenance period.
@@ -4672,6 +4729,67 @@ export interface ConnectivityConfig {
  * Tunneling is the configuration for SSH tunneling
  */
 export interface TunnelingConfig {}
+/**
+ * Config is the configuration for the UI of Gatus
+ *
+ * This interface was referenced by `HttpsGithubComTwiNGatusV5ConfigConfig`'s JSON-Schema
+ * via the `definition` "ConfigUiConfig".
+ */
+export interface ConfigUiConfig1 {
+  /**
+   * Title of the page
+   */
+  title?: string;
+  /**
+   * Meta description of the page
+   */
+  description?: string;
+  /**
+   * Dashboard Title between header and endpoints
+   */
+  'dashboard-heading'?: string;
+  /**
+   * Dashboard Description between header and endpoints
+   */
+  'dashboard-subheading'?: string;
+  /**
+   * Header is the text at the top of the page
+   */
+  header?: string;
+  /**
+   * Logo to display on the page
+   */
+  logo?: string;
+  /**
+   * Link to open when clicking on the logo
+   */
+  link?: string;
+  favicon?: Favicon;
+  /**
+   * Buttons to display below the header
+   */
+  buttons?: Button[];
+  /**
+   * Custom CSS to include in the page
+   */
+  'custom-css'?: string;
+  /**
+   * DarkMode is a flag to enable dark mode by default
+   */
+  'dark-mode'?: boolean;
+  /**
+   * DefaultSortBy is the default sort option ('name', 'group', 'health')
+   */
+  'default-sort-by'?: string;
+  /**
+   * DefaultFilterBy is the default filter option ('none', 'failing', 'unstable')
+   */
+  'default-filter-by'?: string;
+  /**
+   * LoginSubtitle is the subtitle displayed on the OIDC login page
+   */
+  'login-subtitle'?: string;
+}
 /**
  * Config is the configuration for the connectivity checker.
  *
@@ -4788,6 +4906,24 @@ export interface EmailAlertProvider1 {
    * Overrides is a list of Override that may be prioritized over the default configuration
    */
   overrides?: EmailOverride[];
+}
+/**
+ * This interface was referenced by `HttpsGithubComTwiNGatusV5ConfigConfig`'s JSON-Schema
+ * via the `definition` "Favicon".
+ */
+export interface Favicon1 {
+  /**
+   * URL or path to default favourite icon.
+   */
+  default?: string;
+  /**
+   * URL or path to favourite icon for 16x16 size.
+   */
+  size16x16?: string;
+  /**
+   * URL or path to favourite icon for 32x32 size.
+   */
+  size32x32?: string;
 }
 /**
  * AlertProvider is the configuration necessary for sending an alert using Discord
@@ -5614,7 +5750,7 @@ export interface TwilioAlertProvider1 {
  * This interface was referenced by `HttpsGithubComTwiNGatusV5ConfigConfig`'s JSON-Schema
  * via the `definition` "UiConfig".
  */
-export interface UiConfig2 {
+export interface UiConfig1 {
   /**
    * HideConditions whether to hide the condition results on the UI
    */
